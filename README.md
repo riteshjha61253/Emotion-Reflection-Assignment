@@ -82,4 +82,8 @@ This is a mock API endpoint:
 3. After clicking, the analysis result will be shown in the bottom card.
 
 
+### 🔹 Demo Walkthrough
+
+[Watch on Loom](https://www.loom.com/share/7c2d4797f3b342deadb1380342e0bcb3?sid=62a43847-eaa5-48fe-ac7f-a7eade496119)
+
 </md>
