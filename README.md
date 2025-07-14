@@ -1,69 +1,85 @@
-# React + TypeScript + Vite
+<md>
+# Emotion Reflection Tool
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Mock web app that allows users to reflect on how they're feeling and receive a mock emotion analysis.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend**: React + TypeScript + Vite + Tailwind CSS
+- **Backend**: FastAPI (Python)
+- **Design**: Mobile-first, responsive
+- **Communication**: REST API (POST request)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Folder Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```plaintext
+Emotion-Reflection-Tool/
+├── backend/          # FastAPI backend
+├── src/              # React frontend (main code lives here)
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Frontend
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Run these commands in your VS Code terminal in the frontend directory:
+
+```shellscript
+cd Emotion-Reflection-Tool # This is the main folder where frontend code is written
+npm install              # To install dependencies
+npm run dev              # To run the frontend server, which will run on port 5173
 ```
+
+Frontend runs on: `http://localhost:5173`
+
+### Backend
+
+Run these commands to set up the backend:
+
+```shellscript
+cd backend                 # 'backend' is the folder where backend code is written
+python -m venv venv        # Used for creating a virtual environment
+source venv/bin/activate   # Used for activating the virtual environment
+pip install fastapi uvicorn # Used for installing dependencies
+uvicorn main:app --reload  # To run the backend program (or use the command below)
+# or
+python -m uvicorn main:app --reload --port 8000 # To run the backend program on port 8000
+```
+
+Now the backend will run on this port: `http://localhost:8000`
+
+## Mock API
+
+This is a mock API endpoint:
+
+`POST /analyze`
+
+**Request Body Example:**
+
+```json
+{
+  "text": "I'm feeling excited about the weekend!"
+}
+```
+
+**Response Body Example:**
+
+```json
+{
+  "emotion": "Excited",
+  "confidence": 0.91
+}
+```
+
+## How to Use the Web App
+
+1. First, the user will write anything in the input box.
+2. After that, the user will click the "Analyze" button.
+3. After clicking, the analysis result will be shown in the bottom card.
+
+
+</md>
